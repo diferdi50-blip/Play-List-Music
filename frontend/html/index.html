@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App & Voice Search</title>
+    <!-- Hubungkan CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome untuk ikon Search, Mic, Play, Pause -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header & Search Bar -->
+        <header class="header">
+            <h1>🎵 Music Playlist</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Cari judul lagu atau nama artis...">
+                <button id="searchBtn" title="Cari Lagu"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button id="voiceBtn" class="mic-btn" title="Cari lewat Suara"><i class="fa-solid fa-microphone"></i></button>
+            </div>
+            <p id="voiceStatus" class="voice-status"></p>
+        </header>
+
+        <!-- Bagian Katalog Lagu -->
+        <main class="main-content">
+            <div class="section-header">
+                <h2>Katalog Lagu</h2>
+                <span id="songCount" class="badge">0 Lagu</span>
+            </div>
+            <div id="songList" class="song-list">
+                <p class="loading">Memuat daftar lagu dari database MySQL...</p>
+            </div>
+        </main>
+
+        <!-- Player Bar di Bagian Bawah -->
+        <footer class="player-bar">
+            <div class="now-playing">
+                <p id="currentTitle" class="song-title">Pilih lagu untuk memutar</p>
+                <p id="currentArtist" class="song-artist">-</p>
+            </div>
+            <div class="player-controls">
+                <button id="playPauseBtn" class="control-btn"><i class="fa-solid fa-play"></i></button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Hubungkan JavaScript -->
+    <script src="../js/api.js"></script>
+    <script src="../js/player.js"></script>
+</body>
+</html>

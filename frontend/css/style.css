@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 24px;
+    padding-bottom: 110px;
+}
+
+.header h1 {
+    font-size: 26px;
+    margin-bottom: 16px;
+    color: #1db954;
+}
+
+.search-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: 1px solid #2a2a2a;
+    background-color: #242424;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+    border-color: #1db954;
+}
+
+.search-bar button {
+    background-color: #242424;
+    border: 1px solid #2a2a2a;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar button:hover {
+    background-color: #333;
+}
+
+/* Animasi Mic saat mendengarkan suara */
+.mic-btn.listening {
+    background-color: #e74c3c !important;
+    animation: mic-pulse 1.2s infinite;
+}
+
+@keyframes mic-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+.voice-status {
+    font-size: 13px;
+    color: #1db954;
+    min-height: 20px;
+    margin-bottom: 16px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    color: #b3b3b3;
+}
+
+.badge {
+    background-color: #282828;
+    color: #1db954;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.song-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #181818;
+    padding: 14px 18px;
+    border-radius: 8px;
+    transition: background-color 0.2s, transform 0.1s;
+    cursor: pointer;
+}
+
+.song-card:hover {
+    background-color: #242424;
+    transform: translateY(-2px);
+}
+
+.song-card .info h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.song-card .info p {
+    font-size: 13px;
+    color: #b3b3b3;
+}
+
+.play-icon {
+    color: #1db954;
+    font-size: 18px;
+}
+
+.loading {
+    color: #888;
+    font-size: 14px;
+}
+
+/* Floating Bottom Player */
+.player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181818;
+    border-top: 1px solid #282828;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.now-playing .song-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.now-playing .song-artist {
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+.control-btn {
+    background-color: #1db954;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.08);
+}
