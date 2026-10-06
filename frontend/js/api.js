@@ -1,27 +1,159 @@
-const BASE_URL = 'http://127.0.0.1:5000/api';
+const BASE_URL = "http://127.0.0.1:5000/api";
 
-// 1. Mengambil seluruh katalog lagu dari Flask Backend
-async function fetchAllSongs() {
+
+// =====================================================
+// HELPER
+// =====================================================
+
+async function requestApi(url, options = {}) {
+
     try {
-        const response = await fetch(`${BASE_URL}/songs`);
-        if (!response.ok) throw new Error('Network response was not ok');
+
+        const response = await fetch(url, options);
+
         const result = await response.json();
-        return result.data || [];
+
+        if (!response.ok) {
+
+            throw new Error(
+                result.message || "Terjadi kesalahan pada server"
+            );
+
+        }
+
+        return result;
+
     } catch (error) {
-        console.error('Error fetching songs:', error);
+
+        console.error("API Error:", error);
+
+        throw error;
+    }
+}
+
+
+// =====================================================
+// SONG
+// =====================================================
+
+async function fetchAllSongs() {
+
+    try {
+
+        const result =
+            await requestApi(`${BASE_URL}/songs`);
+
+        return result.data || [];
+
+    } catch (error) {
+
         return [];
     }
 }
 
-// 2. Mencari lagu berdasarkan judul / artis (Teks & Voice Search)
+
 async function searchSongsApi(keyword) {
+
     try {
-        const response = await fetch(`${BASE_URL}/lagu/cari?q=${encodeURIComponent(keyword)}`);
-        if (!response.ok) throw new Error('Search request failed');
-        const result = await response.json();
+
+        const result =
+            await requestApi(
+                `${BASE_URL}/lagu/cari?q=${encodeURIComponent(keyword)}`
+            );
+
         return result.data || [];
+
     } catch (error) {
-        console.error('Error searching songs:', error);
+
         return [];
     }
+}
+
+
+// =====================================================
+// PLAYLIST
+// =====================================================
+
+async function fetchPlaylists(userId = null) {
+
+    try {
+
+        let url = `${BASE_URL}/playlists`;
+
+        if (userId) {
+
+            url += `?user_id=${userId}`;
+        }
+
+        const result =
+            await requestApi(url);
+
+        return result.data || [];
+
+    } catch (error) {
+
+        return [];
+    }
+}
+
+
+async function createPlaylist(data) {
+
+    return await requestApi(
+        `${BASE_URL}/playlists`,
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(data)
+        }
+    );
+}
+
+
+async function fetchPlaylistSongs(playlistId) {
+
+    try {
+
+        const result =
+            await requestApi(
+                `${BASE_URL}/playlists/${playlistId}/songs`
+            );
+
+        return result.data || [];
+
+    } catch (error) {
+
+        return [];
+    }
+}
+
+
+async function addSongToPlaylist(
+    playlistId,
+    songId,
+    trackOrder = 1
+) {
+
+    return await requestApi(
+        `${BASE_URL}/playlists/${playlistId}/songs`,
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+
+                song_id: songId,
+
+                track_order: trackOrder
+
+            })
+        }
+    );
 }

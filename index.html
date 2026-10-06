@@ -1,52 +1,558 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music App & Voice Search</title>
-    <!-- Hubungkan CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Font Awesome untuk ikon Search, Mic, Play, Pause -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <div class="app-container">
-        <!-- Header & Search Bar -->
-        <header class="header">
-            <h1>🎵 Music Playlist</h1>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Cari judul lagu atau nama artis...">
-                <button id="searchBtn" title="Cari Lagu"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button id="voiceBtn" class="mic-btn" title="Cari lewat Suara"><i class="fa-solid fa-microphone"></i></button>
-            </div>
-            <p id="voiceStatus" class="voice-status"></p>
-        </header>
 
-        <!-- Bagian Katalog Lagu -->
-        <main class="main-content">
-            <div class="section-header">
-                <h2>Katalog Lagu</h2>
-                <span id="songCount" class="badge">0 Lagu</span>
+    <title>Blue Horizon Music ~ Ferdi</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="frontend/css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-wave-square"></i>
+                </div>
+
+                <div>
+                    <h1>Blue Horizon</h1>
+                    <span>Music Space</span>
+                </div>
             </div>
-            <div id="songList" class="song-list">
-                <p class="loading">Memuat daftar lagu dari database MySQL...</p>
+
+            <div class="menu-group">
+
+                <p class="menu-title">MENU</p>
+
+                <button class="menu-item active" data-section="home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </button>
+
+                <button class="menu-item" data-section="explore">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>Explore</span>
+                </button>
+
+                <button class="menu-item" id="radioBtn">
+                    <i class="fa-solid fa-radio"></i>
+                    <span>Radio</span>
+                </button>
+
             </div>
+
+            <div class="menu-group">
+
+                <p class="menu-title">LIBRARY</p>
+
+                <button class="menu-item active-library" data-section="playlist">
+                    <i class="fa-solid fa-list-music"></i>
+                    <span>Playlist</span>
+                </button>
+
+                <button class="menu-item" data-section="library">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Library</span>
+                </button>
+
+                <button class="menu-item" data-section="favorites">
+                    <i class="fa-regular fa-heart"></i>
+                    <span>Favorites</span>
+                </button>
+
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="audio-quality">
+                    <div class="quality-icon">
+                        <i class="fa-solid fa-diamond"></i>
+                    </div>
+
+                    <div>
+                        <small>OUTPUT LEVEL</small>
+                        <p>Lossless High-Res</p>
+                    </div>
+
+                    <i class="fa-solid fa-signal"></i>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="main">
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div class="mobile-brand">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <span>Blue Horizon</span>
+                </div>
+
+                <div class="top-search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="text" id="searchInput" placeholder="Search artists, tracks, soundscapes...">
+
+                    <button id="clearSearch" class="clear-search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button id="voiceBtn" class="voice-button" onclick="startVoiceSearch()" title="Voice Search">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+
+                </div>
+
+                <div class="top-actions">
+
+                    <button class="icon-button">
+                        <i class="fa-solid fa-volume-low"></i>
+                    </button>
+
+                    <div class="mini-volume">
+                        <div></div>
+                    </div>
+
+                    <button class="icon-button">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <button class="icon-button">
+                        <i class="fa-solid fa-sliders"></i>
+                    </button>
+
+                    <div class="profile">
+                        <div class="profile-avatar">F</div>
+
+                        <div>
+                            <strong>Acoustic Waves</strong>
+                            <small>Listener</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+
+            <section class="content" id="homeSection">
+
+                <!-- HERO -->
+
+                <section class="hero-card">
+
+                    <div class="hero-cover">
+
+                        <img id="heroCover" src="frontend/aset/gambar/Cortis.png" alt="Playlist Cover">
+
+                        <div class="cover-overlay">
+
+                            <span>PLAYLIST • BLUE HORIZON</span>
+
+                            <div class="wave-animation">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <small>HQ • Lossless</small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-info">
+
+                        <div class="public-label">
+                            <span>DAFTAR PUTAR MUSIK</span>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <small>Verified Curation</small>
+                        </div>
+
+                        <h2>Blue Horizon <span>〰</span></h2>
+
+                        <p class="curator">
+                            Dibuat oleh <strong>Tutu~Ferdi</strong>
+                            • Portofolio Suka-suka
+                        </p>
+
+                        <div class="playlist-meta">
+                            <span id="heroSongCount">0 Lagu</span>
+                            <span>•</span>
+                            <span id="heroDuration">0 Menit</span>
+                            <span>•</span>
+                            <span class="likes">
+                                <i class="fa-solid fa-heart"></i>
+                                142.5K Disukai
+                            </span>
+                        </div>
+
+                        <div class="hero-actions">
+
+                            <button class="primary-btn" id="playAllBtn">
+                                <i class="fa-solid fa-play"></i>
+                                Putar Semua
+                            </button>
+
+                            <button class="secondary-btn" id="shuffleBtn">
+                                <i class="fa-solid fa-shuffle"></i>
+                                Acak
+                            </button>
+
+                            <button class="round-btn" id="heroFavorite">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+
+                            <button class="round-btn">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </button>
+
+                            <button class="round-btn">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SEARCH STATUS -->
+
+                <div id="voiceStatus" class="voice-status"></div>
+
+
+                <!-- TRACK HEADER -->
+
+                <section class="tracks-section" id="exploreSection">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h3>Daftar Trek</h3>
+
+                            <span class="track-count">
+                                <span id="songCount">0</span> Soundscapes
+                            </span>
+                        </div>
+
+                        <div class="sort-wrapper">
+
+                            <button id="sortBtn" class="sort-btn">
+                                <i class="fa-solid fa-filter"></i>
+                                Urutkan: <span id="sortLabel">Terbaru</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+
+                            <div class="sort-menu" id="sortMenu">
+                                <button data-sort="newest">Terbaru</button>
+                                <button data-sort="title">Judul A-Z</button>
+                                <button data-sort="artist">Artis A-Z</button>
+                                <button data-sort="duration">Durasi</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TABLE HEADER -->
+
+                    <div class="track-header">
+
+                        <span>#</span>
+                        <span>JUDUL & ARTIS</span>
+                        <span>ALBUM</span>
+                        <span>DITAMBAHKAN</span>
+                        <span>DURASI</span>
+
+                    </div>
+
+
+                    <!-- SONG LIST -->
+
+                    <div id="songList" class="song-list">
+
+                        <div class="loading-state">
+
+                            <div class="loader"></div>
+
+                            <p>Memuat daftar musik...</p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- EMPTY / SEARCH RESULT -->
+
+                <section id="emptyState" class="empty-state hidden">
+
+                    <div>
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+
+                    <h3>Lagu tidak ditemukan</h3>
+
+                    <p>
+                        Coba gunakan kata kunci judul lagu atau nama artis lain.
+                    </p>
+
+                    <button id="showAllBtn">
+                        Tampilkan semua lagu
+                    </button>
+
+                </section>
+
+            </section>
+
         </main>
 
-        <!-- Player Bar di Bagian Bawah -->
-        <footer class="player-bar">
-            <div class="now-playing">
-                <p id="currentTitle" class="song-title">Pilih lagu untuk memutar</p>
-                <p id="currentArtist" class="song-artist">-</p>
-            </div>
-            <div class="player-controls">
-                <button id="playPauseBtn" class="control-btn"><i class="fa-solid fa-play"></i></button>
-            </div>
-        </footer>
-    </div>
 
-    <!-- Hubungkan JavaScript -->
-    <script src="../js/api.js"></script>
-    <script src="../js/player.js"></script>
+        <!-- ================= BOTTOM PLAYER ================= -->
+
+        <footer class="player">
+
+            <!-- Current Song -->
+
+            <div class="player-song">
+
+                <div class="player-cover">
+
+                    <img id="currentCover" src="frontend/aset/gambar/Cortis.png" alt="Current song">
+
+                </div>
+
+                <div class="player-info">
+
+                    <strong id="currentTitle">
+                        Belum ada lagu
+                    </strong>
+
+                    <span id="currentArtist">
+                        Pilih lagu untuk mulai memutar
+                    </span>
+
+                </div>
+
+                <button id="playerFavorite" class="player-heart">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+
+            </div>
+
+
+            <!-- Player Controls -->
+
+            <div class="player-center">
+
+                <div class="control-buttons">
+
+                    <button id="shuffleControl">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </button>
+
+                    <button id="previousBtn">
+                        <i class="fa-solid fa-backward-step"></i>
+                    </button>
+
+                    <button id="playPauseBtn" class="main-play">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+
+                    <button id="nextBtn">
+                        <i class="fa-solid fa-forward-step"></i>
+                    </button>
+
+                    <button id="repeatBtn">
+                        <i class="fa-solid fa-repeat"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="progress-wrapper">
+
+                    <span id="currentTime">0:00</span>
+
+                    <input type="range" id="progressBar" min="0" max="100" value="0">
+
+                    <span id="duration">0:00</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Player Tools -->
+
+            <div class="player-tools">
+
+                <button>
+                    <i class="fa-solid fa-list"></i>
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-display"></i>
+                </button>
+
+                <button id="volumeBtn">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+
+                <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.8">
+
+            </div>
+
+        </footer>
+
+
+        <!-- ================= MOBILE NAV ================= -->
+
+        <nav class="mobile-nav">
+
+            <button data-section="home">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+
+            <button data-section="explore">
+                <i class="fa-solid fa-compass"></i>
+                <span>Explore</span>
+            </button>
+
+            <button id="mobilePlay">
+                <i class="fa-solid fa-play"></i>
+            </button>
+
+            <button data-section="favorites">
+                <i class="fa-regular fa-heart"></i>
+                <span>Favorites</span>
+            </button>
+
+            <button data-section="playlist">
+                <i class="fa-solid fa-list"></i>
+                <span>Playlist</span>
+            </button>
+
+        </nav>
+
+
+        <!-- AUDIO ELEMENT -->
+
+        <audio id="audioPlayer" preload="metadata"></audio>
+
+
+        <!-- ================= PLAYLIST MODAL ================= -->
+
+        <div id="playlistModal" class="modal hidden">
+
+            <div class="modal-box">
+
+                <button id="closeModal" class="modal-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="modal-icon">
+                    <i class="fa-solid fa-list-music"></i>
+                </div>
+
+                <h3>Buat Playlist Baru</h3>
+
+                <p>
+                    Buat koleksi lagu favoritmu sendiri.
+                </p>
+
+                <input id="playlistName" type="text" placeholder="Nama playlist...">
+
+                <textarea id="playlistDescription" placeholder="Deskripsi playlist..."></textarea>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="playlistPublic" checked>
+                    Playlist publik
+                </label>
+
+                <button id="createPlaylistBtn" class="primary-btn modal-submit">
+                    <i class="fa-solid fa-plus"></i>
+                    Buat Playlist
+                </button>
+
+                <p id="playlistMessage" class="modal-message"></p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= ADD TO PLAYLIST MODAL ================= -->
+
+        <div id="addPlaylistModal" class="modal hidden">
+
+            <div class="modal-box">
+
+                <button id="closeAddPlaylist" class="modal-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="modal-icon">
+                    <i class="fa-solid fa-music"></i>
+                </div>
+
+                <h3>Tambahkan ke Playlist</h3>
+
+                <p id="addPlaylistSongName">
+                    Pilih playlist tujuan.
+                </p>
+
+                <div id="playlistOptions" class="playlist-options"></div>
+
+                <button id="newPlaylistFromModal" class="secondary-btn modal-submit">
+                    <i class="fa-solid fa-plus"></i>
+                    Buat Playlist Baru
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- JS -->
+
+        <script src="frontend/js/api.js"></script>
+        <script src="frontend/js/player.js"></script>
+
 </body>
+
 </html>
