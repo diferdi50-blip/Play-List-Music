@@ -89,25 +89,25 @@ const songAssets = {
     "joyride": {
         image: "Cortis.png",
         audio: "CORTIS- JoyRide.mp3",
-        album: "Horizon Solitude Vol. 1"
+        album: "COLOR OUTSIDE THE LINES"
     },
 
     "redred": {
         image: "RedRed.png",
         audio: "CORTIS-REDRED.mp3",
-        album: "Crimson Horizon"
+        album: "GREENGREEN"
     },
 
     "pinky up": {
         image: "Pinky UP.png",
         audio: "KATSEYE-PINKY UP.mp3",
-        album: "Pink Horizon"
+        album: "WILD"
     },
 
     "touch": {
         image: "Touch.png",
         audio: "KATSEYE-Touch.mp3",
-        album: "Oceanic Touch"
+        album: "SIS(Soft Is Strong)"
     }
 
 };

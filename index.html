@@ -10,10 +10,14 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="frontend/css/style.css">
@@ -109,20 +113,30 @@
 
                 <div class="mobile-brand">
                     <i class="fa-solid fa-wave-square"></i>
-                    <span>Blue Horizon</span>
+                    <span>Blue Horizon by Ferdi</span>
                 </div>
 
                 <div class="top-search">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
-                    <input type="text" id="searchInput" placeholder="Search artists, tracks, soundscapes...">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search artists, tracks, soundscapes...">
 
                     <button id="clearSearch" class="clear-search">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
-                    <button id="voiceBtn" class="voice-button" onclick="startVoiceSearch()" title="Voice Search">
+
+                    <button
+                        id="voiceBtn"
+                        class="voice-button"
+                        onclick="startVoiceSearch()"
+                        title="Voice Search">
+
                         <i class="fa-solid fa-microphone"></i>
+
                     </button>
 
                 </div>
@@ -146,12 +160,14 @@
                     </button>
 
                     <div class="profile">
+
                         <div class="profile-avatar">F</div>
 
                         <div>
                             <strong>Acoustic Waves</strong>
                             <small>Listener</small>
                         </div>
+
                     </div>
 
                 </div>
@@ -169,7 +185,10 @@
 
                     <div class="hero-cover">
 
-                        <img id="heroCover" src="frontend/aset/gambar/Cortis.png" alt="Playlist Cover">
+                        <img
+                            id="heroCover"
+                            src="../aset/gambar/Cortis.png"
+                            alt="Playlist Cover">
 
                         <div class="cover-overlay">
 
@@ -183,7 +202,7 @@
                                 <span></span>
                             </div>
 
-                            <small>HQ • Lossless</small>
+                            <small>Ferdi * Sisfo</small>
 
                         </div>
 
@@ -198,7 +217,10 @@
                             <small>Verified Curation</small>
                         </div>
 
-                        <h2>Blue Horizon <span>〰</span></h2>
+                        <h2>
+                            Blue Horizon
+                            <span>〰</span>
+                        </h2>
 
                         <p class="curator">
                             Dibuat oleh <strong>Tutu~Ferdi</strong>
@@ -206,15 +228,22 @@
                         </p>
 
                         <div class="playlist-meta">
+
                             <span id="heroSongCount">0 Lagu</span>
+
                             <span>•</span>
+
                             <span id="heroDuration">0 Menit</span>
+
                             <span>•</span>
+
                             <span class="likes">
                                 <i class="fa-solid fa-heart"></i>
-                                142.5K Disukai
+                                2006K Disukai
                             </span>
+
                         </div>
+
 
                         <div class="hero-actions">
 
@@ -259,26 +288,49 @@
                     <div class="section-heading">
 
                         <div>
+
                             <h3>Daftar Trek</h3>
 
                             <span class="track-count">
-                                <span id="songCount">0</span> Soundscapes
+                                <span id="songCount">0</span>
+                                Soundscapes
                             </span>
+
                         </div>
+
 
                         <div class="sort-wrapper">
 
                             <button id="sortBtn" class="sort-btn">
+
                                 <i class="fa-solid fa-filter"></i>
-                                Urutkan: <span id="sortLabel">Terbaru</span>
+
+                                Urutkan:
+                                <span id="sortLabel">Terbaru</span>
+
                                 <i class="fa-solid fa-chevron-down"></i>
+
                             </button>
 
+
                             <div class="sort-menu" id="sortMenu">
-                                <button data-sort="newest">Terbaru</button>
-                                <button data-sort="title">Judul A-Z</button>
-                                <button data-sort="artist">Artis A-Z</button>
-                                <button data-sort="duration">Durasi</button>
+
+                                <button data-sort="newest">
+                                    Terbaru
+                                </button>
+
+                                <button data-sort="title">
+                                    Judul A-Z
+                                </button>
+
+                                <button data-sort="artist">
+                                    Artis A-Z
+                                </button>
+
+                                <button data-sort="duration">
+                                    Durasi
+                                </button>
+
                             </div>
 
                         </div>
@@ -291,9 +343,13 @@
                     <div class="track-header">
 
                         <span>#</span>
+
                         <span>JUDUL & ARTIS</span>
+
                         <span>ALBUM</span>
+
                         <span>DITAMBAHKAN</span>
+
                         <span>DURASI</span>
 
                     </div>
@@ -351,7 +407,10 @@
 
                 <div class="player-cover">
 
-                    <img id="currentCover" src="frontend/aset/gambar/Cortis.png" alt="Current song">
+                    <img
+                        id="currentCover"
+                        src="../aset/gambar/Cortis.png"
+                        alt="Current song">
 
                 </div>
 
@@ -368,7 +427,9 @@
                 </div>
 
                 <button id="playerFavorite" class="player-heart">
+
                     <i class="fa-regular fa-heart"></i>
+
                 </button>
 
             </div>
@@ -389,7 +450,9 @@
                     </button>
 
                     <button id="playPauseBtn" class="main-play">
+
                         <i class="fa-solid fa-play"></i>
+
                     </button>
 
                     <button id="nextBtn">
@@ -407,7 +470,12 @@
 
                     <span id="currentTime">0:00</span>
 
-                    <input type="range" id="progressBar" min="0" max="100" value="0">
+                    <input
+                        type="range"
+                        id="progressBar"
+                        min="0"
+                        max="100"
+                        value="0">
 
                     <span id="duration">0:00</span>
 
@@ -432,7 +500,13 @@
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
 
-                <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.8">
+                <input
+                    type="range"
+                    id="volumeBar"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.8">
 
             </div>
 
@@ -444,27 +518,41 @@
         <nav class="mobile-nav">
 
             <button data-section="home">
+
                 <i class="fa-solid fa-house"></i>
+
                 <span>Home</span>
+
             </button>
 
             <button data-section="explore">
+
                 <i class="fa-solid fa-compass"></i>
+
                 <span>Explore</span>
+
             </button>
 
             <button id="mobilePlay">
+
                 <i class="fa-solid fa-play"></i>
+
             </button>
 
             <button data-section="favorites">
+
                 <i class="fa-regular fa-heart"></i>
+
                 <span>Favorites</span>
+
             </button>
 
             <button data-section="playlist">
+
                 <i class="fa-solid fa-list"></i>
+
                 <span>Playlist</span>
+
             </button>
 
         </nav>
@@ -495,18 +583,34 @@
                     Buat koleksi lagu favoritmu sendiri.
                 </p>
 
-                <input id="playlistName" type="text" placeholder="Nama playlist...">
+                <input
+                    id="playlistName"
+                    type="text"
+                    placeholder="Nama playlist...">
 
-                <textarea id="playlistDescription" placeholder="Deskripsi playlist..."></textarea>
+                <textarea
+                    id="playlistDescription"
+                    placeholder="Deskripsi playlist..."></textarea>
 
                 <label class="checkbox-label">
-                    <input type="checkbox" id="playlistPublic" checked>
+
+                    <input
+                        type="checkbox"
+                        id="playlistPublic"
+                        checked>
+
                     Playlist publik
+
                 </label>
 
-                <button id="createPlaylistBtn" class="primary-btn modal-submit">
+                <button
+                    id="createPlaylistBtn"
+                    class="primary-btn modal-submit">
+
                     <i class="fa-solid fa-plus"></i>
+
                     Buat Playlist
+
                 </button>
 
                 <p id="playlistMessage" class="modal-message"></p>
@@ -523,11 +627,15 @@
             <div class="modal-box">
 
                 <button id="closeAddPlaylist" class="modal-close">
+
                     <i class="fa-solid fa-xmark"></i>
+
                 </button>
 
                 <div class="modal-icon">
+
                     <i class="fa-solid fa-music"></i>
+
                 </div>
 
                 <h3>Tambahkan ke Playlist</h3>
@@ -538,9 +646,14 @@
 
                 <div id="playlistOptions" class="playlist-options"></div>
 
-                <button id="newPlaylistFromModal" class="secondary-btn modal-submit">
+                <button
+                    id="newPlaylistFromModal"
+                    class="secondary-btn modal-submit">
+
                     <i class="fa-solid fa-plus"></i>
+
                     Buat Playlist Baru
+
                 </button>
 
             </div>
@@ -552,6 +665,8 @@
 
         <script src="frontend/js/api.js"></script>
         <script src="frontend/js/player.js"></script>
+
+    </div>
 
 </body>
 
